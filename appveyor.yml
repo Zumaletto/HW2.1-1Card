@@ -6,7 +6,7 @@ branches:
   only:
     - master
 
-build:  off
+build: off
 
 install:
   - java -jar ./artifacts/app-order.jar &
