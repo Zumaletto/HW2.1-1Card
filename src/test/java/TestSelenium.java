@@ -46,4 +46,16 @@ public class TestSelenium {
         Assertions.assertEquals(expectedText, actualText.trim());
     }
 
+    @Test
+    void shouldSendValidValueDoubleSurname(){
+        WebElement form = driver.findElement(By.cssSelector("[action]"));
+        driver.findElement(cssSelector("[data-test-id=name] input")).sendKeys("Петров-Сидоров Петр");
+        driver.findElement(cssSelector("[data-test-id=phone] input")).sendKeys("+79999999999");
+        driver.findElement(cssSelector("[data-test-id=agreement] .checkbox__box")).click();
+        driver.findElement(cssSelector("[role=button]")).click();
+        String actualText = driver.findElement(cssSelector("[data-test-id=order-success]")).getText();
+        String expectedText = "Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время.";
+        Assertions.assertEquals(expectedText, actualText.trim());
+    }
+
 }
