@@ -1,3 +1,4 @@
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -6,17 +7,14 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
 import static org.openqa.selenium.By.cssSelector;
-import static org.openqa.selenium.By.tagName;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.openqa.selenium.By.*;
 
 
 public class TestSelenium {
     private WebDriver driver;
 
     @BeforeAll
-    static void beforeAll() {
-        System.setProperty("webdriver.chrome.driver", "./driver/chromedriver/chromedriver.exe");
+    static void setupClass() {
+        WebDriverManager.chromedriver().setup();
     }
 
     @BeforeEach
